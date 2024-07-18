@@ -1,0 +1,135 @@
+<div>
+  <div class="content w-full">
+    <!--  -->
+    <div class="grid gap-[900px] bg-1">
+      <div class="h-full backdrop-blur-none transition-all duration-1000 ease-out" id="image-blurer">
+        <div class="h-[75vh] w-full flex justify-center items-center">
+          <div class="grid gap-10">
+            <div class="w-full flex justify-center items-center">
+              <div class="p-10 shadow-lg join-animation" id="slogan">
+                <h1 class="text-white font-bold text-7xl text-center rounded-sm">Equip Your Next
+                  Adventure!</h1>
+              </div>
+            </div>
+
+            <div class="text-white flex justify-center items-center">
+              <button type="button" (click)="downArrowClick()"
+                class="rounded-full w-20 h-20 backdrop-blur-[10px] shadow-lg text-4xl button-hover"><fa-icon
+                  class="button-hover-text" [icon]="faChevronDown"></fa-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="reviews-container">
+      <div class="w-full flex justify-center items-center pb-80">
+        <div class="mb-14">
+          <h1 class="text-3xl text-center font-bold pb-14">Hundreds of Satisfied Clients</h1>
+          <div class="grid gap-20">
+            <div class="flex left transition-all ease-in-out review-viewer">
+              @for (review of reviews; track $index) {
+              <div class="relative origin-center transition-all ease-in-out duration-700 review-child">
+                <div class="h-1/2 flex justify-center">
+                  <img class="absolute w-16" src="../../../assets/images/user-profile.png" alt="feedback-{{$index}}">
+                </div>
+                <div class="bg-primary-light w-48 rounded-sm shadow-md">
+                  <h1 class="text-lg px-2 pt-5 text-center font-semibold">{{review.name}}</h1>
+                  <p class="text-center text-base pb-2">{{review.message}}</p>
+                </div>
+              </div>
+              }
+            </div>
+            <div class="flex transition-all ease-in-out review-viewer">
+              @for (review of reviews; track $index) {
+              <div class="relative origin-center transition-all ease-in-out duration-700 review-child">
+                <div class="h-1/2 flex justify-center">
+                  <img class="absolute w-16" src="../../../assets/images/user-profile.png" alt="feedback-{{$index}}">
+                </div>
+                <div class="bg-primary-light w-48 shadow-md">
+                  <h1 class="text-lg px-2 pt-5 text-center font-semibold">{{review.name}}</h1>
+                  <p class="text-center text-base pb-2">{{review.message}}</p>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full bg-primary-base py-60 pb-72 relative">
+      <div class="relative image-slider">
+        <img class="aspect-video h-[400px] image-slider-item image-slider-item1"
+          src="../../../assets/images/bg/bg-1.jpg">
+        <img class="aspect-video h-[400px] image-slider-item image-slider-item2"
+          src="https://images.unsplash.com/photo-1488790881751-9068aa742b9b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        <img class="aspect-video h-[400px] image-slider-item image-slider-item3"
+          src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        <img class="aspect-video h-[400px] image-slider-item image-slider-item4"
+          src="https://plus.unsplash.com/premium_photo-1661888350177-48a9efbf6985?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
+        <div class="absolute z-10 w-full h-full flex items-center justify-center">
+          <div class="p-24 backdrop-blur-md bg-white bg-opacity-25 shadow-md rounded-md">
+            <h1 class="text-3xl text-center font-bold pb-8">Follow Us On our Social Media!</h1>
+            <div class="flex gap-4 text-5xl justify-center items-center">
+              <fa-icon [icon]="faFaceBook"
+                class="transition-all ease-in-out cursor-pointer text-gray-700 hover:text-blue-600 hover:scale-110"></fa-icon>
+              <div class="text-[10px] h-full"><fa-icon [icon]="faCircle"></fa-icon></div>
+
+              <fa-icon [icon]="faInstagram"
+                class="transition-all ease-in-out cursor-pointer text-gray-700 hover:text-[#c13584] hover:scale-110"></fa-icon>
+              <div class="text-[10px] h-full"><fa-icon [icon]="faCircle"></fa-icon></div>
+
+              <fa-icon [icon]="faXTwitter"
+                class="transition-all ease-in-out cursor-pointer text-gray-700 hover:text-black hover:scale-110"></fa-icon>
+              <div class="text-[10px] h-full"><fa-icon [icon]="faCircle"></fa-icon></div>
+
+              <fa-icon [icon]="faYoutube"
+                class="transition-all ease-in-out cursor-pointer text-gray-700 hover:text-red-600 hover:scale-110"></fa-icon>
+              <div class="text-[10px] h-full"><fa-icon [icon]="faCircle"></fa-icon></div>
+
+              <fa-icon [icon]="faTiktok"
+                class="transition-all ease-in-out cursor-pointer text-gray-700 hover:text-[#ff0050] hover:scale-110"></fa-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full py-60">
+      <div class="w-[95%] relative h-full flex justify-center items-center gap-5">
+        <div class="w-[40rem]"><img
+            src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="sub" class="rounded-md shadow-md"></div>
+        <div class="bg-primary-light p-5 rounded-md bg-opacity-75">
+          <div class="h-full flex justify-center items-center">
+            <div class="mb-28">
+              <div class="pb-6">
+                <h1 class="text-3xl font-semibold">Keep Yourself Updated!</h1>
+                <p>Subscribe to our newsletter to receive updates about discounts and new products added in our
+                  catalog.</p>
+              </div>
+
+              <form [formGroup]="newsLetterForm">
+                <div class="pb-5">
+                  <label for="emailForm">
+                    <p class="transition-colors ease-in-out"
+                      [ngClass]="{'text-red-500': newsLetterForm.controls.email.errors}">Email *</p>
+                  </label>
+                  <input type="email" placeholder="email..." id="emailForm" formControlName="email"
+                    [ngClass]="{'placeholder:text-red-500 text-red-500 bg-[#fff2f2]': newsLetterForm.controls.email.errors}"
+                    class="p-2 text-gray-700 transition-colors ease-in-out outline-none w-1/2 shadow-md">
+                </div>
+
+                <button type="button" [disabled]="!newsLetterForm.valid"
+                  [ngClass]="{'hover:bg-accent-dark': newsLetterForm.valid, 'cursor-not-allowed bg-opacity-50 text-opacity-50': !newsLetterForm.valid}"
+                  class="py-1 px-5 text-lg transition-colors ease-in-out rounded-sm bg-accent-base">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

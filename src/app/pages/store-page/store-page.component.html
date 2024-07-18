@@ -1,0 +1,67 @@
+<div class="p-6 mx-48">
+  <h1 class="text-center font-bold text-3xl pt-10 pb-5">Store</h1>
+  <div>
+    <input type="text" placeholder="filter..."
+      class="w-full outline-none p-2 bg-primary-light text-gray-600 shadow-md rounded-sm"
+      [formControl]="searchForm.controls.searchControl">
+
+    @if (searchForm.controls.categoryControl.value) {
+    <div class="float-left my-2">
+      <button type="button" (click)="searchForm.controls.categoryControl.setValue(null)"
+        class="p-1 bg-gray-400 bg-opacity-50 text-gray-200 shadow-md">{{searchForm.controls.categoryControl.value.replaceAll('_',
+        ' ')}} <fa-icon [icon]="faX" class="text-[10px] pr-1"></fa-icon></button>
+    </div>
+    }
+
+    <div class="float-right relative">
+      <button type="button" class="p-2" (click)="categoryFilterOpen = !categoryFilterOpen"><span
+          class="text-base">Categories </span><fa-icon [icon]="categoryFilterOpen ? faChevronUp : faChevronDown"
+          class="text-sm"></fa-icon></button>
+
+      <div class="transition-all duration-150 ease-in-out bg-primary-base shadow-md w-32 rounded-sm absolute z-10"
+        [ngClass]="{'opacity-0 pointer-events-none': !categoryFilterOpen}">
+        <button type="button" (click)="searchForm.controls.categoryControl.setValue(null)"
+          class="p-2 w-full text-left block transition-colors ease-in-out hover:bg-primary-dark">All</button>
+        @for (category of categories; track $index) {
+        <button type="button" (click)="searchForm.controls.categoryControl.setValue(category.value)"
+          class="p-2 w-full text-left block transition-colors ease-in-out hover:bg-primary-dark">{{category.label}}</button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center w-full">
+    <div class="grid grid-cols-6 gap-x-3 gap-y-32 relative mt-32">
+      @for (product of filteredProducts; track $index) {
+      <div class="pt-2 pb-4 product-item">
+        <div>
+          <div class="relative">
+            <div class="w-full absolute bottom-[-12px]">
+              <div class="flex justify-center">
+                <img [src]="product.imageUrl" class="w-32 product-img" [alt]="product.name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-center text-xl font-semibold pt-3">{{product.name}}</h1>
+        <p class="text-center text-gray-400 text-sm pb-2">{{product.category.replaceAll('_', " ")}}</p>
+        <p class="text-center text-base px-2">{{product.description.length > 40 ? product.description.slice(0, 40) +
+          '...' :
+          product.description}}
+        </p>
+
+        <div class="my-7"></div>
+
+        <div class="flex justify-center">
+          <div class="grid grid-cols-1 w-3/5 gap-1">
+            <button (click)="buyClick(product.id)"
+              class="p-1 px-3 bg-accent-base transition-all ease-in-out rounded-sm block text-base hover:bg-accent-dark">Buy
+              Now</button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

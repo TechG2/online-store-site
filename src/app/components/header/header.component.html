@@ -1,0 +1,65 @@
+<header class="fixed w-full bg-primary-base shadow-md p-0 flex justify-between items-center px-10 z-50">
+  <!-- Left side -->
+  <div>
+    <!-- Logo -->
+    <a class="p-1 font-semibold flex justify-center items-center gap-1 transition-opacity ease-in-out"
+      routerLink="/home">
+      <img class="w-20" src="../../../assets/images/logo.png" alt="logo">
+    </a>
+  </div>
+
+  <!-- Center side -->
+  <div class="w-full">
+    <!-- Menu -->
+    <menu class="p-1">
+      <ul class="flex justify-center gap-1 text-xl">
+        <a routerLink="/home"
+          class="cursor-pointer transition-colors ease-in-out text-primary-dark px-3 hover:text-black"
+          [ngClass]="{'text-black': currentUrl.includes('home')}">
+          <li>Home</li>
+        </a>
+        <li class="border-l-primary-dark border-l-2"></li>
+        <li class="relative">
+          <a class="cursor-pointer transition-colors ease-in-out px-3 text-primary-dark hover:text-black"
+            [ngClass]="{'text-black': currentUrl.includes('store')}"
+            (click)="storeMenuExpanded = !storeMenuExpanded">Store <span class="text-base"><fa-icon
+                [icon]="storeMenuExpanded ? faChevronUp : faChevronDown"></fa-icon></span>
+          </a>
+
+          <div class="absolute rounded-md bg-primary-base shadow-md -left-4 top-10 transition-opacity ease-in-out"
+            [ngClass]="{'opacity-0 pointer-events-none': !storeMenuExpanded}">
+            <div class="w-full">
+              <button type="button" routerLink="/store"
+                class="p-2 whitespace-nowrap transition-colors ease-in-out hover:bg-primary-dark w-full text-left">Store</button>
+            </div>
+            @for (category of categories; track $index) {
+            <div class="w-full">
+              <button type="button" (click)="storeClick(category.value)"
+                class="p-2 whitespace-nowrap transition-colors ease-in-out hover:bg-primary-dark w-full text-left">{{category.label}}</button>
+            </div>
+            }
+          </div>
+        </li>
+        <li class="border-l-primary-dark border-l-2"></li>
+        <a routerLink="/cart"
+          class="cursor-pointer transition-colors ease-in-out px-3 text-primary-dark hover:text-black"
+          [ngClass]="{'text-black': currentUrl.includes('reviews')}">
+          <li>Cart</li>
+        </a>
+      </ul>
+    </menu>
+  </div>
+
+  <!-- Right side -->
+  <div class="text-2xl px-5">
+    <button type="button" routerLink="/cart"><fa-icon [icon]="faShoppingCart"></fa-icon></button>
+  </div>
+  <div>
+    <div>
+      <img class="cursor-pointer w-14" src="../../../assets/images/user-profile.png" alt="logo">
+    </div>
+  </div>
+</header>
+
+<!-- Divider -->
+<div class="h-[70px]"></div>

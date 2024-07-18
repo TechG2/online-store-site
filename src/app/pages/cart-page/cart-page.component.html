@@ -1,0 +1,40 @@
+<div class="min-h-[100vh] flex justify-center items-center">
+  <div class="bg-primary-light rounded-md p-3 pb-10 px-14 w-3/4 h-3/4 shadow-md">
+    <h1 class="text-center text-3xl font-semibold py-4">Shopping Cart</h1>
+    <div class="border-t-2 border-t-primary-base pb-5"></div>
+
+    <div class="flex justify-center w-full">
+      <div class="grid grid-cols-5 w-full gap-5">
+        @for (product of addedProducts; track $index) {
+        <div class="product-item2 p-3">
+          <div>
+            <div class="relative">
+              <div class="w-full">
+                <div class="flex justify-center">
+                  <img [src]="product.imageUrl" class="w-32 product-img" [alt]="product.name">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="text-center text-xl font-semibold pt-3">{{product.name}}</h1>
+          <p class="text-center text-gray-400 text-sm pb-2">{{product.category.replaceAll('_', " ")}}</p>
+          <p class="text-center text-base px-2">{{product.description.length > 40 ? product.description.slice(0, 40) +
+            '...' :
+            product.description}}
+          </p>
+
+          <div class="my-7"></div>
+
+          <div class="flex justify-center">
+            <div class="grid grid-cols-1 w-3/5 gap-1">
+              <button (click)="removeCart($index)"
+                class="p-1 px-3 bg-accent-base transition-all ease-in-out rounded-sm block text-base hover:bg-accent-dark">Remove</button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
